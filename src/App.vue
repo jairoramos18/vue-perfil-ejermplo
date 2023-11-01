@@ -1,22 +1,37 @@
 <script setup>
+import { ref } from 'vue';
 
+let qty = ref (0)
+function addvalue(){
+  qty.value ++
+  console.log(qty)
+}
+function minusvalue(){
+  
+  if (qty.value>0){
+    qty.value--
+    
+  }
+  console.log(qty)
+ 
+}
 </script>
 
 <template>
 <div class="wrapper">
   <div class="profile">
 
-    <div class="ballon">12</div>
+    <div class="ballon" v-show="qty>0">{{ qty }}</div>
   </div>
 
   <div class="buttomw">
-   <div class="buttom" >
-    <div>-</div>
+   <div class="buttom"  @click="minusvalue"><div>-</div>
    </div>
-   <div class="buttom" >
-    <div>+</div>
+   <div class="buttom" @click="addvalue">  <div>+</div>
    </div>
   </div>
+  <div v-if="qty">me escribieron 😂 </div>
+  <div v-else >nadie me escribe 😒</div>
 </div>
 
 </template>
